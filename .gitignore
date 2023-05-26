@@ -367,3 +367,6 @@ vcpkg_installed/
 
 # Executable
 vk_demo
+
+# Clang
+compile_commands.json
