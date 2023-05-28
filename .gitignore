@@ -370,3 +370,6 @@ vk_demo
 
 # Clang
 compile_commands.json
+
+# Shader
+*.spv
