@@ -97,6 +97,12 @@
       <AdditionalLibraryDirectories>$(VULKAN_SDK)\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>glslangValidator.exe -V $(SolutionDir)shaders\shader.vert -o $(SolutionDir)shaders\vert.spv
+glslangValidator.exe -V $(SolutionDir)shaders\shader.frag -o $(SolutionDir)shaders\frag.spv
+Copy $(SolutionDir)shaders $(OutDir)shaders
+Copy $(SolutionDir)shaders $(OutDir)shaders</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
