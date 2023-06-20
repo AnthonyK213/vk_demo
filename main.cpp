@@ -80,6 +80,10 @@ public:
     initWindow();
     initVulkan();
     mainLoop();
+  }
+
+  ~HelloTriangleApplication() {
+    std::cout << "Bye!" << std::endl;
     cleanup();
   }
 
