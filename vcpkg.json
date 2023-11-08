@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "builtin-baseline": "1384becefca5c1511f0e070c43f66ad6a3783c8e",
+  "dependencies": [
+    {
+      "name": "glfw3",
+      "host": true
+    },
+    {
+      "name": "glm",
+      "host": true
+    }
+  ],
+  "overrides": [
+    {
+      "name": "glfw3",
+      "version": "3.3.8#2"
+    },
+    {
+      "name": "glm",
+      "version": "2023-06-08#0"
+    }
+  ]
+}
+

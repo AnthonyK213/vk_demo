@@ -1,5 +1,8 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <vulkan/vulkan_core.h>
+
 #include <algorithm>
 #include <array>
 #include <cstddef>
@@ -7,7 +10,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <fstream>
-#include <glm/glm.hpp>
 #include <ios>
 #include <iostream>
 #include <limits>
@@ -15,7 +17,6 @@
 #include <set>
 #include <stdexcept>
 #include <vector>
-#include <vulkan/vulkan_core.h>
 
 #define VK_TRY(expr, msg)                                                      \
   if (expr != VK_SUCCESS) {                                                    \
@@ -171,7 +172,7 @@ private:
   void initWindow() {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
     window = glfwCreateWindow(WIDTH, HEIGHT, "vk_demo", nullptr, nullptr);
   }
 
