@@ -3,6 +3,7 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include <vulkan/vulkan_core.h>
 
 #include <algorithm>
@@ -10,10 +11,12 @@
 #include <iostream>
 #include <set>
 #include <vector>
+#include <chrono>
 
 #include "QueueFamilyIndices.h"
 #include "SwapChainSupportDetails.h"
 #include "Vertex.h"
+#include "UniformBufferObject.h"
 
 class HelloTriangleApplication {
 public:
@@ -32,6 +35,8 @@ private:
 
   void createRenderPass();
 
+  void createDescriptorSetLayout();
+
   void createGraphicsPipeline();
 
   void createFramebuffers();
@@ -41,6 +46,12 @@ private:
   void createVertexBuffer();
 
   void createIndexBuffer();
+
+  void createUniformBuffers();
+
+  void createDescriptorPool();
+
+  void createDescriptorSets();
 
   void createCommandBuffers();
 
@@ -108,6 +119,8 @@ private:
 
   void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
 
+  void updateUniformBuffer(uint32_t currentImage);
+
 public:
   ~HelloTriangleApplication();
 
@@ -149,4 +162,12 @@ private:
   VkDeviceMemory vertexBufferMemory;
   VkBuffer indexBuffer;
   VkDeviceMemory indexBufferMemory;
+
+  std::vector<VkBuffer> uniformBuffers;
+  std::vector<VkDeviceMemory> uniformBuffersMemory;
+  std::vector<void *> uniformBuffersMapped;
+
+  VkDescriptorSetLayout descriptorSetLayout;
+  VkDescriptorPool descriptorPool;
+  std::vector<VkDescriptorSet> descriptorSets;
 };
