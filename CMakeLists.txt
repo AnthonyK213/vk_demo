@@ -22,6 +22,10 @@ execute_process(
   COMMAND glslc ${CMAKE_SOURCE_DIR}/src/shaders/shader.frag
              -o ${CMAKE_BINARY_DIR}/bin/shaders/frag.spv
   )
+file(
+  COPY ${CMAKE_SOURCE_DIR}/resources/textures/
+  DESTINATION ${CMAKE_BINARY_DIR}/bin/textures/
+  )
 
 add_executable(
   ${PROJECT_NAME}
