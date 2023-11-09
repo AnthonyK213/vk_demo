@@ -64,9 +64,48 @@
   - Represents a set of pixels
   - In other graphics APIs may call it *texture*
 
+- **DeviceMemory**
+  - Represents a block of memory allocated from a specific memory type with a specific
+    length in bytes
+  - Shouldn't allocate separate DeviceMemory for each Buffer or Image. Instead,
+    should allocate bigger chunks of memory and assign parts of them to the Buffers
+    and Images
+
+- **SwapChainKHR**
+  - Represents a set of images that can be presented on the Surface
+  - These images already have their backing memory allocated by the system
+
+- Views
+  - **Buffer** and **Image** are not always used directly in rendering
+  - Like view in database - sets of parameters that can be used to look at a set
+    of underlying data in a desired way
+  - **BufferView**
+  - **ImageView**
+
+- Descriptors
+  - The way shaders can access these resources (Buffers, Images and Samplers)
+  - Descriptors don't exist on their own, but are always grouped in descriptor sets
+  - **DescriptorSetLayout**
+    - Behaves like a template for a descriptor set
+  - **DescriptorPool**
+    - A simple object used to allocate descriptor sets
+  - **DescritptorSet**
+    - Represents memory that holds actual descriptors
+    - Can be configured so that a descriptor points to specific Buffer, BufferView,
+      Image or Sampler (`vkUpdateDescriptorSets`)
+
+- **PipelineLayout**
+
 - **RenderPass**
 
 - **Pipeline**
+  - **ShaderModule**
+  - **PipelineCache**
+
+- **Query**
+  - **QueryPool**
+
+- **Fence**
 
 - **Semaphore**
 

@@ -25,12 +25,14 @@ execute_process(
 
 add_executable(
   ${PROJECT_NAME}
+  src/HelloTriangleApplication.cpp
   src/main.cpp
   )
 
 target_include_directories(
   ${PROJECT_NAME}
   PRIVATE
+  include
   ${Vulkan_INCLUDE_DIR}
   )
 
