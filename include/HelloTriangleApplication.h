@@ -15,6 +15,7 @@
 #include <fstream>
 #include <iostream>
 #include <set>
+#include <unordered_map>
 #include <vector>
 
 #include "QueueFamilyIndices.h"
@@ -157,6 +158,8 @@ private:
 
   VkFormat findDepthFormat();
 
+  void loadModel();
+
 public:
   ~HelloTriangleApplication();
 
@@ -194,6 +197,8 @@ private:
 
   bool framebufferResized = false;
 
+  std::vector<Vertex> vertices;
+  std::vector<uint32_t> indices;
   VkBuffer vertexBuffer;
   VkDeviceMemory vertexBufferMemory;
   VkBuffer indexBuffer;

@@ -26,6 +26,10 @@ file(
   COPY ${CMAKE_SOURCE_DIR}/resources/textures/
   DESTINATION ${CMAKE_BINARY_DIR}/bin/textures/
   )
+file(
+  COPY ${CMAKE_SOURCE_DIR}/resources/models/
+  DESTINATION ${CMAKE_BINARY_DIR}/bin/models/
+  )
 
 add_executable(
   ${PROJECT_NAME}
