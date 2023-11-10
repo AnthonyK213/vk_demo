@@ -2,8 +2,12 @@
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+
+#define GLM_FORCE_RADIANS
+#define GLM_FORCE_DEPTH_ZERO_TO_ONE
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
 #include <vulkan/vulkan_core.h>
 
 #include <algorithm>
@@ -38,6 +42,8 @@ private:
   void createDescriptorSetLayout();
 
   void createGraphicsPipeline();
+
+  void createDepthResources();
 
   void createFramebuffers();
 
@@ -142,7 +148,14 @@ private:
   void copyBufferToImage(VkBuffer buffer, VkImage image, uint32_t width,
                          uint32_t height);
 
-  VkImageView createImageView(VkImage image, VkFormat format);
+  VkImageView createImageView(VkImage image, VkFormat format,
+                              VkImageAspectFlags aspectFlags);
+
+  VkFormat findSupportedFormat(const std::vector<VkFormat> &candidates,
+                               VkImageTiling tiling,
+                               VkFormatFeatureFlags features);
+
+  VkFormat findDepthFormat();
 
 public:
   ~HelloTriangleApplication();
@@ -200,4 +213,8 @@ private:
   VkImageView textureImageView;
 
   VkSampler textureSampler;
+
+  VkImage depthImage;
+  VkDeviceMemory depthImageMemory;
+  VkImageView depthImageView;
 };
