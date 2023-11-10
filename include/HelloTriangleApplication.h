@@ -44,6 +44,8 @@ private:
 
   void createGraphicsPipeline();
 
+  void createColorResources();
+
   void createDepthResources();
 
   void createFramebuffers();
@@ -135,9 +137,10 @@ private:
   void updateUniformBuffer(uint32_t currentImage);
 
   void createImage(uint32_t width, uint32_t height, uint32_t mipLevels,
-                   VkFormat format, VkImageTiling tiling,
-                   VkImageUsageFlags usage, VkMemoryPropertyFlags properties,
-                   VkImage &image, VkDeviceMemory &imageMemory);
+                   VkSampleCountFlagBits numSample, VkFormat format,
+                   VkImageTiling tiling, VkImageUsageFlags usage,
+                   VkMemoryPropertyFlags properties, VkImage &image,
+                   VkDeviceMemory &imageMemory);
 
   VkCommandBuffer beginSingleTimeCommands();
 
@@ -164,6 +167,8 @@ private:
 
   void generateMipmaps(VkImage image, VkFormat imageFormat, int32_t texWidth,
                        int32_t texHeight, uint32_t mipLevels);
+
+  VkSampleCountFlagBits getMaxUsableSampleCount();
 
 public:
   ~HelloTriangleApplication();
@@ -228,4 +233,10 @@ private:
   VkImage depthImage;
   VkDeviceMemory depthImageMemory;
   VkImageView depthImageView;
+
+  VkSampleCountFlagBits msaaSamples = VK_SAMPLE_COUNT_1_BIT;
+
+  VkImage colorImage;
+  VkDeviceMemory colorImageMemory;
+  VkImageView colorImageView;
 };
