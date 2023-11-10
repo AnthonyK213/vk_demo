@@ -103,6 +103,7 @@
   - Create a Framebuffer object by specifying the RenderPass and the set of ImageViews
 
 - **Pipeline**
+  ![The Vulkan pipeline](https://vulkan-tutorial.com/images/vulkan_pipeline_block_diagram.png)
   - Represents the configuration of the whole pipline and has a lot of parameters
   - **PipelineLayout**
     - Defines the layout of descriptors and push constants
